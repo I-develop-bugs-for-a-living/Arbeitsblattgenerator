@@ -24,7 +24,7 @@ def generateMath():
         op = random.choice(operatorsHard)
         num1 = random.randint(1, 10)
         if op == ":":
-            num2 = num1 * random.randint(1,5)
+            num2 = num1 * random.randint(0,10)
             num1, num2 = num2, num1
         else:
             num2 = random.randint(1, 10)
