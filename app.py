@@ -1,37 +1,11 @@
-import random
+from flask import Flask, render_template, send_file
 
-def generateHTML(content):
-    template = f"""
-        <h1>Math Arbeitsblatt</h1>
-        <p>Berechne alle Aufgaben so gut du kannst:</p>
-        <h3>Die Matheaufgaben</h3>
-    """
-    for i in content:
-        template = template + f"<p>{i}</p>\n"
-    with open("index.html", "w") as file:
-        file.write(template)
+app = Flask(__name__)
 
-def generateMath():
-    operatorsEasy = ["+", "-"]
-    operatorsHard = ["*", ":"]
-    mathContent = []
-    for i in range(15):
-        op = random.choice(operatorsEasy)
-        num1 = random.randint(1, 100)
-        num2 = random.randint(1, 100)
-        mathContent.append(f"{num1} {op} {num2} = ")
-    for i in range(15):
-        op = random.choice(operatorsHard)
-        num1 = random.randint(1, 10)
-        if op == ":":
-            num2 = num1 * random.randint(0,10)
-            num1, num2 = num2, num1
-        else:
-            num2 = random.randint(1, 10)
-        mathContent.append(f"{num1} {op} {num2} = ")
-    return mathContent
+@app.route('/')
+def home():
+    return render_template("base.html")
 
-    print(mathContent)
-
-content = generateMath()
-generateHTML(content)
+@app.route('/download')
+def download():
+    return send_file("index.html", as_attachment=True)
