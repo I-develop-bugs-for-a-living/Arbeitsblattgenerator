@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./static/input.css -o ./dist/output.css --watch"
+  },
   "devDependencies": {
     "tailwindcss": "^3.0.19"
   }
