@@ -28,7 +28,6 @@ def generateMath():
         mathContent.append(f"{num1} {op} {num2} = ")
     return mathContent
 
-    print(mathContent)
 
 content = generateMath()
 generateHTML(content)
